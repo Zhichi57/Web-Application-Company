@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Поиск</title>
+</head>
+<body>
+<form name="test" method="post">
+    {% csrf_token %}
+    <p><b>Введите запрос:</b><br>
+        <input type="text" name="request" size="40">
+    </p>
+    <p><b>Атрибуты поиска:</b><Br>
+        {% for r in radio %}
+            <input type="radio" name="atr" value="{{ r }}">{{ r }}<Br>
+        {% endfor %}
+    </p>
+    <p><input type="submit" value="Отправить">
+        <input type="reset" value="Очистить"></p>
+</form>
+<table border="1">
+    <tr>
+        {% for rd in radio %}
+            <th>{{ rd }}</th>
+        {% endfor %}
+    </tr>
+    {% if employee %}
+        {% block employee %} {% endblock %}
+    {% elif passports %}
+        {% block passports %} {% endblock %}
+    {% elif education %}
+        {% block education %} {% endblock %}
+    {% elif departments %}
+        {% block departments %} {% endblock %}
+    {% elif timetable %}
+        {% block timetable %} {% endblock %}
+    {% endif %}
+</table>
+</body>
+</html>

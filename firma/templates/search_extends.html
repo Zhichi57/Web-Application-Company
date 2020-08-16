@@ -1,0 +1,60 @@
+{% extends "search.html" %}
+
+{% block employee %}
+    {% for el in dict %}
+        <tr>
+            <td>{{ el.id }}</td>
+            <td>{{ el.first_name }}</td>
+            <td>{{ el.last_name }}</td>
+            <td>{{ el.patronymic }}</td>
+            <td>{{ el.pol }}</td>
+            <td>{{ el.date }}</td>
+            <td>{{ el.address }}</td>
+            <td>{{ el.phone }}</td>
+            <td>{{ el.id_position }}</td>
+        </tr>
+    {% endfor %}
+{% endblock %}
+
+{% block passports %}
+    {% for el in dict %}
+        <tr>
+            <td>{{ el.id_pasport }}</td>
+            <td>{{ el.id_employee }}</td>
+            <td>{{ el.number }}</td>
+            <td>{{ el.name_give }}</td>
+            <td>{{ el.date }}</td>
+        </tr>
+    {% endfor %}
+{% endblock %}
+
+{% block education %}
+    {% for el in dict %}
+        <tr>
+            <td>{{ el.id_education }}</td>
+            <td>{{ el.id_employee }}</td>
+            <td>{{ el.type_education }}</td>
+            <td>{{ el.name_education }}</td>
+        </tr>
+    {% endfor %}
+{% endblock %}
+
+{% block departments %}
+    {% for el in dict %}
+        <tr>
+            <td>{{ el.id_department }}</td>
+            <td>{{ el.name }}</td>
+        </tr>
+    {% endfor %}
+{% endblock %}
+
+{% block timetable %}
+    {% for el in dict %}
+        <tr>
+            <td>{{ el.id_position }}</td>
+            <td>{{ el.id_department }}</td>
+            <td>{{ el.name }}</td>
+            <td>{{ el.count }}</td>
+        </tr>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактирования</title>
+</head>
+<body>
+<button onclick="window.location='/'">Назад</button>
+<br>
+<form method="post">
+    {% csrf_token %}
+    <table border="1">
+        <tr>
+            {% for cols in cols %}
+                <th>{{ cols }}</th>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for key, value in select_dict.items %}
+                <td><input type="text" value="{{ value }}" name="{{ key }}"></td>
+            {% endfor %}
+        </tr>
+    </table>
+<input type="submit" value="Сохранить" >
+</form>
+</body>
+</html>

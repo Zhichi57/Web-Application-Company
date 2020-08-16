@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Просмотр</title>
+</head>
+<body>
+Просмотр
+<button onclick="window.location='..'">Назад</button><br>
+<strong>Сотрудники</strong>
+<button onclick="window.location='../add/employee'">Добавить</button><br>
+<table border="1">
+    <tr>
+        {% for cols in employee_cols %}
+            <th>{{ cols }}</th>
+        {% endfor %}
+        <th></th>
+    </tr>
+    {% for e in employee %}
+        <tr>
+            <td>{{ e.id }}</td>
+            <td>{{ e.first_name }}</td>
+            <td>{{ e.last_name }}</td>
+            <td>{{ e.patronymic }}</td>
+            <td>{{ e.pol }}</td>
+            <td>{{ e.date }}</td>
+            <td>{{ e.phone }}</td>
+            <td>{{ e.address }}</td>
+            <td>{{ e.id_position }}</td>
+            <td><a href="edit/employee/{{ e.id }}">Изменить</a> | <a href="delete/employee/{{ e.id }}">Удалить</a></td>
+        </tr>
+    {% endfor %}
+</table>
+<br>
+<strong>Паспорт</strong>
+<button onclick="window.location='../add/passports'">Добавить</button><br>
+<table border="1">
+    <tr>
+        {% for cols in passports_cols %}
+            <th>{{ cols }}</th>
+        {% endfor %}
+        <th></th>
+    </tr>
+    {% for p in passports %}
+        <tr>
+            <td>{{ p.id_pasport }}</td>
+            <td>{{ p.id_employee }}</td>
+            <td>{{ p.number }}</td>
+            <td>{{ p.name_give }}</td>
+            <td>{{ p.date }}</td>
+            <td><a href="edit/passports/{{ p.id_pasport }}">Изменить</a> | <a
+                    href="delete/passports/{{ e.id_pasport }}">Удалить</a></td>
+        </tr>
+    {% endfor %}
+</table>
+<br>
+<strong>Образование</strong>
+<button onclick="window.location='../add/education'">Добавить</button><br>
+<table border="1">
+    <tr>
+        {% for cols in education_cols %}
+            <th>{{ cols }}</th>
+        {% endfor %}
+        <th></th>
+    </tr>
+    {% for ed in education %}
+        <tr>
+            <td>{{ ed.id_education }}</td>
+            <td>{{ ed.id_employee }}</td>
+            <td>{{ ed.type_education }}</td>
+            <td>{{ ed.name_education }}</td>
+            <td><a href="edit/education/{{ ed.id_education }}">Изменить</a> | <a
+                    href="delete/education/{{ ed.id_education }}">Удалить</a></td>
+        </tr>
+    {% endfor %}
+</table>
+<br>
+<strong>Отделы</strong>
+<button onclick="window.location='../add/departments'">Добавить</button><br>
+<table border="1">
+    <tr>
+        {% for cols in departments_cols %}
+            <th>{{ cols }}</th>
+        {% endfor %}
+        <th></th>
+    </tr>
+    {% for d in departments %}
+        <tr>
+            <td>{{ d.id_department }}</td>
+            <td>{{ d.name }}</td>
+            <td><a href="edit/departments/{{ d.id_department }}">Изменить</a> | <a
+                    href="delete/departments/{{ d.id_department }}">Удалить</a></td>
+        </tr>
+    {% endfor %}
+</table>
+<br>
+<strong>Расписание</strong>
+<button onclick="window.location='../add/timetable'">Добавить</button><br>
+<table border="1">
+    <tr>
+        {% for cols in timetable_cols %}
+            <th>{{ cols }}</th>
+        {% endfor %}
+        <th></th>
+    </tr>
+    {% for t in timetable %}
+        <tr>
+            <td>{{ t.id_position }}</td>
+            <td>{{ t.id_department }}</td>
+            <td>{{ t.name }}</td>
+            <td>{{ t.count }}</td>
+            <td><a href="edit/timetable/{{ t.id_position }}">Изменить</a> | <a
+                    href="delete/timetable/{{ t.id_position }}">Удалить</a></td>
+        </tr>
+    {% endfor %}
+</table>
+<br>
+</body>
+</html>
