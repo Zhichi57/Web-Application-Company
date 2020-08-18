@@ -170,7 +170,7 @@ def addPageView(request, name):
             "id_position": employee.id_position
         }
         data = {"cols": colls_dict.get(name), "select_dict": employee_atr}
-        return render(request, 'edit.html', data)
+        return render(request, 'add.html', data)
     if name == "departments":
         departments = Departments()
         if request.method == "POST":
@@ -183,7 +183,7 @@ def addPageView(request, name):
             "name": departments.name
         }
         data = {"cols": colls_dict.get(name), "select_dict": departments_atr}
-        return render(request, 'edit.html', data)
+        return render(request, 'add.html', data)
     if name == "education":
         education = Education()
         if request.method == "POST":
@@ -200,7 +200,7 @@ def addPageView(request, name):
             "name_education": education.name_education
         }
         data = {"cols": colls_dict.get(name), "select_dict": education_atr}
-        return render(request, 'edit.html', data)
+        return render(request, 'add.html', data)
     if name == "passports":
         passports = Pasports()
         if request.method == "POST":
@@ -219,7 +219,7 @@ def addPageView(request, name):
             "date": passports.date
         }
         data = {"cols": colls_dict.get(name), "select_dict": passports_atr}
-        return render(request, 'edit.html', data)
+        return render(request, 'add.html', data)
     if name == "timetable":
         timetable = Timetable()
         if request.method == "POST":
@@ -236,7 +236,7 @@ def addPageView(request, name):
             "count": timetable.count,
         }
         data = {"cols": colls_dict.get(name), "select_dict": timetable_atr}
-        return render(request, 'edit.html', data)
+        return render(request, 'add.html', data)
 
 
 def deletePageView(request, name, id):
