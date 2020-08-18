@@ -297,7 +297,7 @@ def editPageView(request, name, id):
             "last_name": employee.last_name,
             "patronymic": employee.patronymic,
             "pol": employee.pol,
-            "date": employee.date,
+            "date": employee.date.isoformat(),
             "address": employee.address,
             "phone": employee.phone,
             "id_position": employee.id_position.id_position
@@ -349,7 +349,7 @@ def editPageView(request, name, id):
             "id_employee": passports.id_employee.id,
             "number": passports.number,
             "name_give": passports.name_give,
-            "date": passports.date
+            "date": passports.date.isoformat()
         }
         data = {"cols": colls_dict.get(name), "select_dict": passports_atr}
         return render(request, 'edit.html', data)
