@@ -148,7 +148,9 @@ def addPageView(request, name):
     }
     if name == "employee":
         employee = Employee()
+        timetable = Timetable()
         if request.method == "POST":
+            employee.id = int(request.POST.get("id"))
             employee.first_name = request.POST.get("first_name")
             employee.last_name = request.POST.get("last_name")
             employee.patronymic = request.POST.get("patronymic")
@@ -156,6 +158,7 @@ def addPageView(request, name):
             employee.date = request.POST.get("date")
             employee.address = request.POST.get("address")
             employee.phone = request.POST.get("phone")
+            employee.id_position = Timetable.objects.get(id_position=int(request.POST.get("id_position")))
             employee.save()
             return HttpResponseRedirect("/")
         employee_atr = {
@@ -167,7 +170,7 @@ def addPageView(request, name):
             "date": employee.date,
             "address": employee.address,
             "phone": employee.phone,
-            "id_position": employee.id_position
+            "id_position": timetable.id_position
         }
         data = {"cols": colls_dict.get(name), "select_dict": employee_atr}
         return render(request, 'add.html', data)
@@ -186,16 +189,17 @@ def addPageView(request, name):
         return render(request, 'add.html', data)
     if name == "education":
         education = Education()
+        employee = Employee()
         if request.method == "POST":
             education.id_education = request.POST.get("id_education")
-            education.id_employee = request.POST.get("id_employee")
+            education.id_employee = Employee.objects.get(id=int(request.POST.get("id_employee")))
             education.type_education = request.POST.get("type_education")
             education.name_education = request.POST.get("name_education")
             education.save()
             return HttpResponseRedirect("/")
         education_atr = {
             "id_education": education.id_education,
-            "id_employee": education.id_employee,
+            "id_employee": employee.id,
             "type_education": education.type_education,
             "name_education": education.name_education
         }
@@ -203,9 +207,10 @@ def addPageView(request, name):
         return render(request, 'add.html', data)
     if name == "passports":
         passports = Pasports()
+        employee = Employee()
         if request.method == "POST":
             passports.id_pasport = request.POST.get("id_pasport")
-            passports.id_employee = request.POST.get("id_employee")
+            passports.id_employee = Employee.objects.get(id=int(request.POST.get("id_employee")))
             passports.number = request.POST.get("number")
             passports.name_give = request.POST.get("name_give")
             passports.date = request.POST.get("date")
@@ -213,7 +218,7 @@ def addPageView(request, name):
             return HttpResponseRedirect("/")
         passports_atr = {
             "id_pasport": passports.id_pasport,
-            "id_employee": passports.id_employee,
+            "id_employee": employee.id,
             "number": passports.number,
             "name_give": passports.name_give,
             "date": passports.date
@@ -222,16 +227,17 @@ def addPageView(request, name):
         return render(request, 'add.html', data)
     if name == "timetable":
         timetable = Timetable()
+        departaments = Departments()
         if request.method == "POST":
             timetable.id_position = request.POST.get("id_position")
-            timetable.id_department = request.POST.get("id_department")
+            timetable.id_department = Departments.objects.get(id_department=int(request.POST.get("id_department")))
             timetable.name = request.POST.get("name")
             timetable.count = request.POST.get("count")
             timetable.save()
             return HttpResponseRedirect("/")
         timetable_atr = {
             "id_position": timetable.id_position,
-            "id_department": timetable.id_department,
+            "id_department": departaments.id_department,
             "name": timetable.name,
             "count": timetable.count,
         }
