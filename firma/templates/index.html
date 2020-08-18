@@ -25,7 +25,7 @@
             <td>{{ e.date }}</td>
             <td>{{ e.phone }}</td>
             <td>{{ e.address }}</td>
-            <td>{{ e.id_position }}</td>
+            <td>{{ e.id_position.id_position }}</td>
             <td><a href="edit/employee/{{ e.id }}">Изменить</a> | <a href="delete/employee/{{ e.id }}">Удалить</a></td>
         </tr>
     {% endfor %}
@@ -44,7 +44,7 @@
     {% for p in passports %}
         <tr>
             <td>{{ p.id_pasport }}</td>
-            <td>{{ p.id_employee }}</td>
+            <td>{{ p.id_employee.id }}</td>
             <td>{{ p.number }}</td>
             <td>{{ p.name_give }}</td>
             <td>{{ p.date }}</td>
@@ -67,7 +67,7 @@
     {% for ed in education %}
         <tr>
             <td>{{ ed.id_education }}</td>
-            <td>{{ ed.id_employee }}</td>
+            <td>{{ ed.id_employee.id }}</td>
             <td>{{ ed.type_education }}</td>
             <td>{{ ed.name_education }}</td>
             <td><a href="edit/education/{{ ed.id_education }}">Изменить</a> | <a
@@ -109,7 +109,7 @@
     {% for t in timetable %}
         <tr>
             <td>{{ t.id_position }}</td>
-            <td>{{ t.id_department }}</td>
+            <td>{{ t.id_department.id_department }}</td>
             <td>{{ t.name }}</td>
             <td>{{ t.count }}</td>
             <td><a href="edit/timetable/{{ t.id_position }}">Изменить</a> | <a

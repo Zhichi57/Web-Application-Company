@@ -273,6 +273,7 @@ def editPageView(request, name, id):
     }
     if name == "employee":
         employee = Employee.objects.get(id=id)
+
         if request.method == "POST":
             employee.first_name = request.POST.get("first_name")
             employee.last_name = request.POST.get("last_name")
@@ -292,7 +293,7 @@ def editPageView(request, name, id):
             "date": employee.date,
             "address": employee.address,
             "phone": employee.phone,
-            "id_position": employee.id_position
+            "id_position": employee.id_position.id_position
         }
         data = {"cols": colls_dict.get(name), "select_dict": employee_atr}
         return render(request, 'edit.html', data)
@@ -320,7 +321,7 @@ def editPageView(request, name, id):
             return HttpResponseRedirect("/")
         education_atr = {
             "id_education": education.id_education,
-            "id_employee": education.id_employee,
+            "id_employee": education.id_employee.id,
             "type_education": education.type_education,
             "name_education": education.name_education
         }
@@ -338,7 +339,7 @@ def editPageView(request, name, id):
             return HttpResponseRedirect("/")
         passports_atr = {
             "id_pasport": passports.id_pasport,
-            "id_employee": passports.id_employee,
+            "id_employee": passports.id_employee.id,
             "number": passports.number,
             "name_give": passports.name_give,
             "date": passports.date
@@ -356,7 +357,7 @@ def editPageView(request, name, id):
             return HttpResponseRedirect("/")
         timetable_atr = {
             "id_position": timetable.id_position,
-            "id_department": timetable.id_department,
+            "id_department": timetable.id_department.id_department,
             "name": timetable.name,
             "count": timetable.count,
         }

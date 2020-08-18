@@ -11,7 +11,7 @@
             <td>{{ el.date }}</td>
             <td>{{ el.address }}</td>
             <td>{{ el.phone }}</td>
-            <td>{{ el.id_position }}</td>
+            <td>{{ el.id_position.id_position }}</td>
         </tr>
     {% endfor %}
 {% endblock %}
@@ -20,7 +20,7 @@
     {% for el in dict %}
         <tr>
             <td>{{ el.id_pasport }}</td>
-            <td>{{ el.id_employee }}</td>
+            <td>{{ el.id_employee.id }}</td>
             <td>{{ el.number }}</td>
             <td>{{ el.name_give }}</td>
             <td>{{ el.date }}</td>
@@ -32,7 +32,7 @@
     {% for el in dict %}
         <tr>
             <td>{{ el.id_education }}</td>
-            <td>{{ el.id_employee }}</td>
+            <td>{{ el.id_employee.id }}</td>
             <td>{{ el.type_education }}</td>
             <td>{{ el.name_education }}</td>
         </tr>
@@ -52,7 +52,7 @@
     {% for el in dict %}
         <tr>
             <td>{{ el.id_position }}</td>
-            <td>{{ el.id_department }}</td>
+            <td>{{ el.id_department.id_department }}</td>
             <td>{{ el.name }}</td>
             <td>{{ el.count }}</td>
         </tr>
