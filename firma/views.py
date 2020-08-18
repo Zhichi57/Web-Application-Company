@@ -288,6 +288,7 @@ def editPageView(request, name, id):
             employee.date = request.POST.get("date")
             employee.address = request.POST.get("address")
             employee.phone = request.POST.get("phone")
+            employee.id_position = Timetable.objects.get(id_position=int(request.POST.get("id_position")))
             employee.save()
             return HttpResponseRedirect("/")
         employee_atr = {
@@ -320,7 +321,7 @@ def editPageView(request, name, id):
         education = Education.objects.get(id_education=id)
         if request.method == "POST":
             education.id_education = request.POST.get("id_education")
-            education.id_employee = request.POST.get("id_employee")
+            education.id_employee = Employee.objects.get(id=int(request.POST.get("id_employee")))
             education.type_education = request.POST.get("type_education")
             education.name_education = request.POST.get("name_education")
             education.save()
@@ -337,7 +338,7 @@ def editPageView(request, name, id):
         passports = Pasports.objects.get(id_pasport=id)
         if request.method == "POST":
             passports.id_pasport = request.POST.get("id_pasport")
-            passports.id_employee = request.POST.get("id_employee")
+            passports.id_employee = Employee.objects.get(id=int(request.POST.get("id_employee")))
             passports.number = request.POST.get("number")
             passports.name_give = request.POST.get("name_give")
             passports.date = request.POST.get("date")
@@ -356,7 +357,7 @@ def editPageView(request, name, id):
         timetable = Timetable.objects.get(id_position=id)
         if request.method == "POST":
             timetable.id_position = request.POST.get("id_position")
-            timetable.id_department = request.POST.get("id_department")
+            timetable.id_department = Departments.objects.get(id_department=int(request.POST.get("id_department")))
             timetable.name = request.POST.get("name")
             timetable.count = request.POST.get("count")
             timetable.save()
